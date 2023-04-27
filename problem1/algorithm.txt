@@ -1,0 +1,24 @@
+a) English solution to the problem:
+
+We will have all processes increment their round numbers at arbitrary time intervals. They will always be waiting to get a low-level receive.
+When they get a receive from another process, they will look at the round number tagged to the sequence number (each message will be of form <msg, round>).
+Assume that the current process P_i is in round r and is receiving a message from P_j in round k.
+Two cases must be covered when a process receives a message:
+    1. The message is tagged with a round number from the future (i.e. k > r)
+    The current node will have to hold onto this message until it reaches r = k + 1 round to announce that it has received it.
+    The message was thus sent from P_j at round k and P_i was supposed to receive it at round k+1.
+    
+    2. The message is tagged with a round number from the past (i.e. k < r)
+    The current node can just announce that it has received the message in the next round r+1. 
+
+b) pseudocode for SynchP_Send and Asynch_Receive
+
+SynchP_Send(x, j)
+
+Asynch_Receive(x, j)
+
+
+c) Code complexity (time, messages, etc.)
+
+d) argument of algorithm correctness
+

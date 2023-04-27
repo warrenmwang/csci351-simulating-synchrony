@@ -1,0 +1,16 @@
+
+round 0: everyone send
+round 1: rcv, compute, send, 
+round X: rcv, compute, send
+...
+
+want to make it appear like p0, p1, p2, ... do their things in that order, ofc in reality all at the same time in arbitrary asynchronous order
+
+synchP
+> can increment your round number whenever you want
+> just hold onto msgs you get tagged from rounds from the future (this is the bad case), hold on until you get to the right round to send
+> if you get messages from the past , msg just took a long time to get to you, announce in the next round immediately
+
+fully synchronous
+> stop the fast processes from moving into the future
+> processes must receive a special message from every other process telling them its ok to move onto the next round
