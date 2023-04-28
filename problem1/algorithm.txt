@@ -20,5 +20,16 @@ Asynch_Receive(x, j)
 
 c) Code complexity (time, messages, etc.)
 
+maybe capped at O(n^2) messages
+
+
+
 d) argument of algorithm correctness
+
+Whenever a process receives a message it will always check that message's tagged round number from the sender with its round number. 
+If the tagged round number is smaller than its round number, the process will know that it is valid to announce that it has received that message and will do so.
+However, if the tagged round number is larger than its round number, the process will know that it must wait until its round number has sufficiently advanced
+enough till its round number is greater than that tagged round number to announce. Therefore, the process will hold onto any messages it receives that
+have round numbers larger than its own until at some later round when its round number is one greater then it will announce to the user that it has
+received that message.
 
