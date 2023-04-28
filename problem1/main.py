@@ -11,11 +11,11 @@ end_round = 10
 
 n = comm.Get_size()
 
-# assume a fully connected graph, uniform
-# we'll use a nonblocking send
+# assume a fully connected graph, uniform; we'll use a nonblocking send
 # msg = [sender_id, sender_round]
 
 msg = [rank, ith_round]
+
 # send a message to a random process
 j = randint(0, n-1)
 while j == rank:
@@ -25,7 +25,7 @@ comm.isend(msg, dest=j)
 backlog = []
 
 while ith_round < end_round:
-    # wait till we receive a message
+    # wait till we receive a message OR 0.1 seconds have passed and we haven't received anything
     recvRequest = comm.irecv()
 
     recvTimeCounterStart = time.time()
@@ -52,6 +52,8 @@ while ith_round < end_round:
     tmp = []
     for item in backlog:
         if item[1] < ith_round:
+            sender_id = item[0]
+            jth_round = item[1]
             print(f"{ith_round},{rank},{sender_id},{jth_round}")
             tmp.append(item)
     for item in tmp:

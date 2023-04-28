@@ -18,8 +18,7 @@ with open(inFile, "r") as f:
             d[ith_round] = []
         d[ith_round].append(f"P{rank} received a msg from P{sender_id} sent from round {jth_round}")
 
-
-for round in d:
+for round in sorted(d):
     print(f"Round {round}:")
     for msg in d[round]:
         print(f"\t{msg}")
