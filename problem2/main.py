@@ -33,7 +33,7 @@ def simulateRound(round,twoDimensionalMsg):
                 if recvData[1] == round+1: 
                     return round+1
 
-totalRounds = 3
+totalRounds = 5
 i = 1
 
 while i < totalRounds: 
@@ -42,4 +42,4 @@ while i < totalRounds:
     (simulateRound(i,twoDimensionalMsg))
     i+=1
       
-print(SendReceive.messages)
+print("P_"+str(rank)+" List of Recieved Messages: " + str(SendReceive.messages)+"\n")

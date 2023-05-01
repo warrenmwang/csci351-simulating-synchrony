@@ -20,7 +20,7 @@ def lowLevelSend(process,messageList,round):
                 msg = [rank, messageList[i],round]
                 #Send message
                 comm.isend(msg, dest = i,tag = 0)
-                print("Sent " + str(msg[1]) + " to " + str(i))
+                # print("Sent " + str(msg[1]) + " to " + str(i))
 
                 #Get validation response from Pi 
                 recvRequest = comm.irecv(source = i, tag = 1)
@@ -30,7 +30,7 @@ def lowLevelSend(process,messageList,round):
                         msg = recvData[1]
                         
                         if msg[1] == round: 
-                            print(str(rank) + " Received Validation From " + str(msg[0]) + " in round " + str(msg[1]))
+                            # print(str(rank) + " Received Validation From " + str(msg[0]) + " in round " + str(msg[1]))
                             break
         
         #After send a message to all processes saying the next sender in the round can begin 
@@ -49,11 +49,11 @@ def receive(round):
         if recvData[0]: 
             senderID = recvData[1][0]
             msg = recvData[1]
-            print(str(rank) + "Received " + str(msg))
+            # print(str(rank) + "Received " + str(msg))
             if msg[2] == round: 
                 #Send validation to sender
                 comm.isend([rank,round],dest = senderID,tag = 1)
-                messages.append(round)
+                messages.append(str(msg[1]))
                 break
     return msg 
 
