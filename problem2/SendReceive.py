@@ -12,7 +12,6 @@ send a message from process = process to respective processes
 messageList -> list of messages to send respective processes i.e messageList[0] = message to be sent to p0
 '''
 def lowLevelSend(process,messageList,round): 
-    count = 0; 
     if process == rank: 
         #Iterate over all processes
         for i in range(n): 
