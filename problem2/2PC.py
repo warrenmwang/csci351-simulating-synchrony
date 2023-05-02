@@ -23,7 +23,7 @@ def abort():
     msg_matrix[0] = ["ABORT" for i in range(n)]
 
 def all_votes_commit():
-    return all(msg == "COMMIT" for msg in SendReceive.messages)
+    return all(msg == "COMMIT" for msg in SendReceive.messages) and len(SendReceive.messages) == n-1
 
 for round in range(1, num_rounds+1):
     #Phase 1
@@ -51,5 +51,5 @@ for round in range(1, num_rounds+1):
             print("Process", rank, "is in state", state)
 
 
-
+#CITATIONS : Chapter 8 Principles of Transaction Processing, 2nd Edition, Philip A. Bernstein, Eric Newcomer, 1997,
 
