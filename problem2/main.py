@@ -33,13 +33,13 @@ def simulateRound(round,twoDimensionalMsg):
                 if recvData[1] == round+1: 
                     return round+1
 
-totalRounds = 5
-i = 1
-
-while i < totalRounds: 
-
-    twoDimensionalMsg = [[ "Round " + str(i) + " P0->P0","Round " + str(i) + " P0->P1","Round " + str(i) + " P0->P2"],["Round " + str(i) + " P1->P0","Round " + str(i) + " P1->P1","Round " + str(i) + " P1->P2"],["Round " + str(i) + " P2->P0","Round " + str(i) + " P2->P1","Round " + str(i) + " P2->P2"]]
-    (simulateRound(i,twoDimensionalMsg))
-    i+=1
-      
-print("P_"+str(rank)+" List of Recieved Messages: " + str(SendReceive.messages)+"\n")
+# totalRounds = 5
+# i = 1
+#
+# while i < totalRounds: 
+#
+#     twoDimensionalMsg = [[ "Round " + str(i) + " P0->P0","Round " + str(i) + " P0->P1","Round " + str(i) + " P0->P2"],["Round " + str(i) + " P1->P0","Round " + str(i) + " P1->P1","Round " + str(i) + " P1->P2"],["Round " + str(i) + " P2->P0","Round " + str(i) + " P2->P1","Round " + str(i) + " P2->P2"]]
+#     (simulateRound(i,twoDimensionalMsg))
+#     i+=1 
+#
+# print("P_"+str(rank)+" List of Recieved Messages: " + str(SendReceive.messages)+"\n")

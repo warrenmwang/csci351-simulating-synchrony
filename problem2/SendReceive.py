@@ -45,14 +45,16 @@ def receive(round):
     recvRequest = comm.irecv(tag = 0)
     while True: 
         recvData = recvRequest.test() 
-        if recvData[0]: 
+        if recvData[0]:
+           
             senderID = recvData[1][0]
             msg = recvData[1]
             # print(str(rank) + "Received " + str(msg))
             if msg[2] == round: 
                 #Send validation to sender
                 comm.isend([rank,round],dest = senderID,tag = 1)
-                messages.append(str(msg[1]))
+                if str(msg[1]) != "NULL":
+                    messages.append(str(msg[1]))
                 break
     return msg 
 
@@ -88,5 +90,6 @@ def highLevelSend(process,message,round):
             break
 
     return nextProcess
+
 
 
